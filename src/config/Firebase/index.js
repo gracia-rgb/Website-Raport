@@ -1,5 +1,7 @@
 import firebase from 'firebase'
 import "firebase/storage"
+import 'firebase/auth'
+import { useEffect, useState, useContext, createContext } from 'react'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,3 +19,21 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export default firebase;
+
+export const AuthContext = createContext()
+
+export const AuthContextProvider = props =>{
+  const [user, setuser] = useState()
+  const [error, setError] = useState()
+  const auth1 = firebase.auth();
+  useEffect(() =>{
+    const unsubscribe = auth1.onAuthStateChanged(firebase.auth(), setuser, setError)
+    return () => unsubscribe()
+  },[])
+  return<AuthContext.Provider value={{user, error}} {...props} />
+}
+
+export const useAuthState = () =>{
+  const auth= useContext(AuthContext)
+  return{...auth, isAuthenticated: auth.user !=null}
+}

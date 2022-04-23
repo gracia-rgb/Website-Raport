@@ -1,11 +1,13 @@
 import {useState} from 'react'
 import * as XLSX from 'xlsx'
 import firebase from '../../../config/Firebase';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import SideMenu from '../../menu/SideMenu';
 
 function Exx() {
-  const {id} = useParams()
+  const {id} = useParams();
+  const {uid} = useParams();
+  
   // on change states
   const [excelFile, setExcelFile]=useState(null);
   const [excelFileError, setExcelFileError]=useState(null);  
@@ -34,12 +36,10 @@ function Exx() {
     }
   }
 
-  let history = useHistory();
-  const handleClick = () => {
-    history.push(`/`)
-  }
 
   
+  const today = new Date(), date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  console.log(date);
 
   // submit function
   const sem1 =(e) =>{
@@ -49,12 +49,16 @@ function Exx() {
       const worksheetName = workbook.SheetNames[0];
       const worksheet=workbook.Sheets[worksheetName];
       const data = XLSX.utils.sheet_to_json(worksheet);
+      const datanilai = {
+        TanggalUpload: date,
+        data: data,
+        Uploadby: uid,
+      }
       setExcelData(data);
-      console.log(data);
-      console.log(id)
       
-    firebase.database().ref(`student/${id}/sem1`).set(data)
-    alert('Nilai berhasil diupload')
+      
+    firebase.database().ref(`student/${id}/sem1`).set(datanilai)
+    alert('Nilai Semester I berhasil diupload')
     }
     else{
       setExcelData(null);
@@ -67,12 +71,14 @@ function Exx() {
        const worksheetName = workbook.SheetNames[0];
        const worksheet=workbook.Sheets[worksheetName];
        const data = XLSX.utils.sheet_to_json(worksheet);
+       const datanilai = {
+           TanggalUpload: date,
+           data: data,
+           Uploadby: uid,
+       }
        setExcelData(data);
-       console.log(data);
-       console.log(id)
-       
-     firebase.database().ref(`student/${id}/sem2`).set(data)
-     alert('Nilai berhasil diupload')
+     firebase.database().ref(`student/${id}/sem2`).set(datanilai)
+     alert('Nilai Semester II berhasil diupload')
      }
      else{
        setExcelData(null);
@@ -86,12 +92,16 @@ function Exx() {
        const worksheetName = workbook.SheetNames[0];
        const worksheet=workbook.Sheets[worksheetName];
        const data = XLSX.utils.sheet_to_json(worksheet);
+       const datanilai = {
+        TanggalUpload: date,
+        data: data,
+        Uploadby: uid,
+       }
        setExcelData(data);
-       console.log(data);
-       console.log(id)
+      
        
-     firebase.database().ref(`student/${id}/sem3`).set(data)
-     alert('Nilai berhasil diupload')
+     firebase.database().ref(`student/${id}/sem3`).set(datanilai)
+     alert('Nilai Semester III berhasil diupload')
      }
      else{
        setExcelData(null);
@@ -105,12 +115,16 @@ function Exx() {
        const worksheetName = workbook.SheetNames[0];
        const worksheet=workbook.Sheets[worksheetName];
        const data = XLSX.utils.sheet_to_json(worksheet);
+       const datanilai = {
+        TanggalUpload: date,
+        data: data,
+        Uploadby: uid,
+      }
        setExcelData(data);
-       console.log(data);
-       console.log(id)
+     
        
-     firebase.database().ref(`student/${id}/sem4`).set(data)
-     alert('Nilai berhasil diupload')
+     firebase.database().ref(`student/${id}/sem4`).set(datanilai)
+     alert('Nilai Semester IV berhasil diupload')
      }
      else{
        setExcelData(null);
@@ -124,12 +138,14 @@ function Exx() {
        const worksheetName = workbook.SheetNames[0];
        const worksheet=workbook.Sheets[worksheetName];
        const data = XLSX.utils.sheet_to_json(worksheet);
+       const datanilai = {
+        TanggalUpload: date,
+        data: data,
+        Uploadby: uid,
+      }
        setExcelData(data);
-       console.log(data);
-       console.log(id)
-       
-     firebase.database().ref(`student/${id}/sem5`).set(data)
-     alert('Nilai berhasil diupload')
+     firebase.database().ref(`student/${id}/sem5`).set(datanilai)
+     alert('Nilai Semester V berhasil diupload')
      }
      else{
        setExcelData(null);
@@ -143,11 +159,16 @@ function Exx() {
        const worksheetName = workbook.SheetNames[0];
        const worksheet=workbook.Sheets[worksheetName];
        const data = XLSX.utils.sheet_to_json(worksheet);
+       const datanilai = {
+        TanggalUpload: date,
+        data: data,
+        Uploadby: uid,
+      }
        setExcelData(data);
      
        
-     firebase.database().ref(`student/${id}/sem6`).set(data)
-     alert('Nilai berhasil diupload')
+     firebase.database().ref(`student/${id}/sem6`).set(datanilai)
+     alert('Nilai Semester VI berhasil diupload')
      }
      else{
        setExcelData(null);
@@ -157,7 +178,7 @@ function Exx() {
     return (
      <div className='row'>
    <form onSubmit={sem1}>
-       <p className='pseml'>Unggah Nilai</p>
+       <p className='pseml'>Upload Nilai</p>
           <p className='psem1'>Semester I</p>
            <input type='file' className="upl"
            onChange={handleFile} required></input>                  
@@ -243,16 +264,21 @@ function Exx() {
     )
   }
   return (
-   <div>
-     <SideMenu />
+   <div> 
+     <SideMenu
+   link={`/${uid}/daftarsiswa`} title={"Daftar Siswa"}
+   link2={""} title2={""}  icon2={""}
+   link3={""} title3={""} icon={""}
+/>
      <div>
-     {list()}
-{list2()}
-{list3()}
-{list4()}
-{list5()}
-{list6()}
+  {list()}
+  {list2()}
+  {list3()}
+  {list4()}
+  {list5()}
+  {list6()}
      </div>
+    
     </div>
   );
 }

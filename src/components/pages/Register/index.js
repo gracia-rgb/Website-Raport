@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import firebase from "../../../config/Firebase"
+import firebase from "../../../config/Firebase";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const Register = () => {
   const [namaLengkap, setnamaLengkap] = useState("");
@@ -13,7 +13,6 @@ const Register = () => {
   const onSubmit = () => {
      const data = {
        namaLengkap : namaLengkap,
-       waliKelas: waliKelas,
        nomorTelepon: nomorTelepon,
        email: email,
      }
@@ -21,7 +20,7 @@ const Register = () => {
      .then((userCredential) => {
        //simpan ke realtime database
        const userId = userCredential.user.uid;
-       firebase.database().ref('users/' + userId).set(data);
+       firebase.database().ref('admin/' + userId).set(data);
       setnamaLengkap('')
       setEmail('')
      setPassword('')
@@ -49,15 +48,6 @@ const Register = () => {
         value={namaLengkap}
         onChange={(e) => setnamaLengkap(e.target.value)}
       />
-      
-      <input
-        className="regs"
-        placeholder="Wali Kelas"
-        
-        value={waliKelas}
-        onChange={(e) => setwaliKelas(e.target.value)}
-      />
-    
       <input
         className="regs"
         placeholder="Nomor Telepon"

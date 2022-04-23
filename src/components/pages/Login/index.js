@@ -6,7 +6,6 @@ import {useHistory} from 'react-router-dom';
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
     let history = useHistory();
     const handleClick = () => {
       history.push("/register")

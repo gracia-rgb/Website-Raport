@@ -31,7 +31,10 @@ const CekEmail = () => {
     }
  return (
     <div>
-        <SideMenu />
+        <SideMenu 
+           link={"/tambahuser"} title={"Tambah User"}
+           link2={"/cekemail"} title2={"Ganti Email"}  
+           link3={"/user"} title3={"User"} icon={""}/>
         <input
       className="formemail"
       placeholder="Email"

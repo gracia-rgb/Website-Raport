@@ -368,8 +368,8 @@ p{
   width: 75px;
   height: 30px;
   margin-right: 43px; 
-  margin-left: -60px;
-  margin-top: 42px; 
+  margin-left: 3px;
+  margin-top: -20px; 
   cursor: pointer;
   
 }
@@ -381,7 +381,7 @@ p{
   border-radius: 8px;
   width: 75px;
   height: 30px;
-  margin-top: 43px;
+  margin-top: -20px;
   cursor: pointer;
 }
 
@@ -392,7 +392,7 @@ p{
   border-radius: 8px;
   width: 75px;
   height: 30px;
-  margin-top: 43px;
+  margin-top: 0px;
   cursor: pointer;
   margin-left: -30px;
   margin-right: 10px;
@@ -470,7 +470,7 @@ margin-top: -20px;
   margin-top: -19.40px;
 }
 .table {
-  margin-left: 295px;
+  margin-left: -30px;
 }
 .upload {
   background-color: white;
@@ -763,4 +763,247 @@ color: #5D5D89;
 .login{
   margin-left: -300px;
   padding-left: 80px;
+}
+
+.container{
+  margin-top: -270px;
+  margin-left: -30px;
+}
+
+
+
+.p-3 {
+  background-color: #008000;
+  color: white;
+  text-align: center;
+  border-style: none;
+}
+
+.sebagai {
+  margin-top: 40px;
+  margin-left: 290px;
+}
+
+.sebagai1{
+  margin-top: 40px;
+  margin-left: 350px;
+}
+.mb-3{
+ width: 700px;
+ margin-left: 250px;
+}
+.formm{
+  padding: 100px;
+  margin-top: -90px;
+}
+.form-control{
+  border: none;
+  border-bottom: 1px solid #868D8D;
+  margin-top: 5px ;
+  padding: 5px;
+  width: 608px;
+  align-items: center;
+  outline: none;
+
+}
+.btnadmin {
+  border-radius: 10px;
+  margin: 60px 250px;
+  font-size: 1.2rem;
+  width: 608px;
+  height: 45px; 
+  background-color: #61B15A;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+  transition: .5s;
+  border: none;
+  text-decoration: none;
+}
+
+.p{
+  width: 40px;
+  margin-top: 410px;
+  margin-left: 610px;
+}
+
+.btn1{
+  border-radius: 10px;
+  margin: 55px 2px;
+  font-size: 1.2rem;
+  width: 608px;
+  height: 45px; 
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+  transition: .5s;
+  border: none;
+  text-decoration: none;
+  margin-top: 70px;
+}
+
+.boxform {
+  position: relative;
+  top: 0px;
+  padding: 10px;
+  margin-left: 400px;
+  
+}
+
+.btnform {
+  border-radius: 10px;
+  margin: 5px 400px;
+  font-size: 1.2rem;
+  width: 150px;
+  height: 45px; 
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+  transition: .5s;
+  border: none;
+  text-decoration: none;
+}
+.buatbtn {
+  width: 85px;
+  height: 35px;
+  margin-left: 20px;
+  border: none;
+  background: rgb(120, 151, 192);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.userview{
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.viewbtn {
+  
+  width: 85px;
+  height: 35px;
+  margin-top: -90px;
+  margin-left: 10px;
+  border: none;
+  background: rgb(120, 151, 192);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.tablesis { 
+  margin-top: 10px;
+  margin-left: 340px;
+  width: 900px;
+}
+
+.formadd {
+  margin-top: -50px;
+  margin-left: 50px;
+}
+
+.btned {
+  width: 105px;
+  height: 35px;
+  margin-top: 20px;
+  margin-left: 280px;
+  border: none;
+  background: #7897c0;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.edittitle{
+  margin-top: 20px;
+  margin-left: 310px;
+}
+
+.card {
+  width: 20rem;
+  height: 100px;
+  margin-left: 90px;
+  background-color: transparent;
+}
+
+.card-title {
+  
+}
+
+.rowin{
+  margin-top: -220px;
+  margin-left: 10px;
+}
+
+.btnel{
+  width: 105px;
+  height: 35px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border: none;
+  background: rgb(120, 151, 192);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.forgot {
+  margin-top: 455px;
+  margin-left: 569px;
+  width: 200px;
+}
+
+.link {
+  color: gray;
+  text-decoration: none;
+}
+
+.out {
+  margin-top: 565px;
+  margin-left: -5px;
+  width: 200px;
+}
+
+.linkout {
+  color: #eaeaea;
+  text-decoration: none;
+  position: fixed;
+}
+
+.nmedt {
+  background-color: #008000;
+  color: white;
+  width: 300px;
+  margin-top: -25px;
+  margin-left: 300px;
+}
+
+.frgtbtn {
+  width: 205px;
+  height: 35px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border: none;
+  background: rgb(120, 151, 192);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.forgt {
+  margin-top: 20px;
+  margin-left: 23px;
+}
+
+.rst {
+  margin-top: -20px;
+  font-size: 20px;
+}
+.seml {
+  margin-top: 5px;
+  width: 300px;
+  color: gray;
+  font-size: 12px;
 }
