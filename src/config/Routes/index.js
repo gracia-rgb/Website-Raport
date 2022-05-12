@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Login from '../../components/pages/Login';
 import Profile from '../../components/pages/Profile';
 import Register from '../../components/pages/Register';
 import Exx from '../../components/pages/Exx';
-import Search from '../../components/pages/Search';
 import ChangeEmail from '../../components/pages/ChangeEmail';
 import CekEmail from '../../components/pages/CekEmail';
 import Loginn from '../../components/pages/Loginn';
@@ -18,22 +16,16 @@ import TambahUser from '../../components/pages/TambahUser';
 import User from '../../components/pages/User';
 import TambahSiswa from '../../components/pages/TambahSiswa';
 import Daftar from '../../components/pages/Daftar';
-import Upload from '../../components/pages/Upload';
 import Forgot from '../../components/pages/ForgotPass';
-import PrivateRoute from '../../PrivateRoute';
-import { AuthContextProvider, useAuthState } from '../Firebase';
-import { Redirect } from 'react-router-dom';
+import ViewNilai from '../../components/pages/ViewNilai';
+import OpAngkatan from '../../components/pages/OpAngkatan';
+import ViewNilai2 from '../../components/pages/ViewNilai2';
+import ViewNilai3 from '../../components/pages/ViewNilai3';
+import ViewNilai4 from '../../components/pages/ViewNilai4';
+import ViewNilai5 from '../../components/pages/ViewNilai5';
+import ViewNilai6 from '../../components/pages/ViewNilai6';
 const Routes = () => {
-  const AuthenticatedRoute = ({component: C, ...props}) =>{
-    
-    const {isAuthenticated} = useAuthState()
-    return(
-      <Route {...props}
-      render={routeProps =>
-      !isAuthenticated ? < C {...routeProps} /> : <Redirect to={"/"} />}
-    />
-      )
-  }
+  
   return (
    <Router>
           <Switch>
@@ -70,31 +62,51 @@ const Routes = () => {
           <OperatorHome/>
         </Route>
 
-        <Route exact path="/editdatasiswa">
+        <Route exact path="/OpAngkatan">
+          <OpAngkatan/>
+        </Route>
+        <Route exact path="/editdatasiswa/:angkatan">
           <TambahSiswa/>
         </Route>
         
         
-        <Route exact path="/:uid/daftarsiswa">
+        <Route exact path="/:uid/daftarsiswa/:angkatan">
           <Daftar/>
         </Route>
 
-        <Route exact path="/upload">
-          <Upload/>
-        </Route>
+    
 
-  <Route exact path="/:uid/walikelashome">
-  <WaliKelasnHome/>
-  </Route>
+       <Route exact path="/:uid/walikelashome/:angkatan">
+       <WaliKelasnHome/>
+       </Route>
+         <Route exact path="/:uid/viewnilai/:id/:angkatan">
+        <ViewNilai/>
+       </Route>
+       
+       <Route exact path="/:uid/viewnilai2/:id/:angkatan">
+        <ViewNilai2/>
+       </Route>
 
+       <Route exact path="/:uid/viewnilai3/:id/:angkatan">
+        <ViewNilai3/>
+       </Route>
 
+       <Route exact path="/:uid/viewnilai4/:id/:angkatan">
+        <ViewNilai4/>
+       </Route>
+       
+       <Route exact path="/:uid/viewnilai5/:id/:angkatan">
+        <ViewNilai5/>
+       </Route>
+       
+       <Route exact path="/:uid/viewnilai6/:id/:angkatan">
+        <ViewNilai6/>
+       </Route>
         <Route exact path="/tambahuser">
           <TambahUser/>
         </Route>
 
-         <Route path="/login">
-             <Login />
-        </Route>       
+      
        
        <Route path="/profile" >
            <Profile />
@@ -104,12 +116,7 @@ const Routes = () => {
            <Register />
        </Route>
 
-      <Route path="/:uid/exx/:id" component={Exx} />
-      
-       <Route path="/search" component={Search} >
-           <Search />
-       </Route>
-
+      <Route path="/:uid/exx/:id/:angkatan" component={Exx} />
 
        <Route path="/:uid/changeemail" component={ChangeEmail} >
         

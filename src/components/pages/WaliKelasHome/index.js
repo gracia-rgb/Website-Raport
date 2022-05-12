@@ -4,12 +4,13 @@ import SideMenu from "../../menu/SideMenu";
 import { useParams} from 'react-router-dom';
 const WaliKelasnHome = () => {
   const {uid} = useParams()
+  const {angkatan} = useParams()
   console.log('uid',{uid})
 
   return(
           <div>
              <SideMenu
-                link={`/${uid}/daftarsiswa`} title={"Daftar Siswa"}
+                link={`/${uid}/daftarsiswa/${angkatan}`} title={"Daftar Siswa"}
                 link2={""} title2={""}  
                 link3={""} title3={""} 
             />

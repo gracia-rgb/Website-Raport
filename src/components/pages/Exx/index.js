@@ -6,8 +6,9 @@ import SideMenu from '../../menu/SideMenu';
 
 function Exx() {
   const {id} = useParams();
-  const {uid} = useParams();
-  
+  const {uid, angkatan} = useParams();
+  console.log(id)
+ 
   // on change states
   const [excelFile, setExcelFile]=useState(null);
   const [excelFileError, setExcelFileError]=useState(null);  
@@ -53,12 +54,16 @@ function Exx() {
         TanggalUpload: date,
         data: data,
         Uploadby: uid,
+        ket: 'Mata Pelajaran',
+        ketn: 'Nilai',
+        kelas: 'Kelas 1 Semester Ganjil',
       }
       setExcelData(data);
       
       
-    firebase.database().ref(`student/${id}/sem1`).set(datanilai)
-    alert('Nilai Semester I berhasil diupload')
+    firebase.database().ref(`/${angkatan}/${id}/kelas1semganjil`).set(datanilai)
+    firebase.database().ref(`/${angkatan}/${id}/nilaiupdate`).update(datanilai)
+    alert('Nilai berhasil diupload')
     }
     else{
       setExcelData(null);
@@ -75,10 +80,14 @@ function Exx() {
            TanggalUpload: date,
            data: data,
            Uploadby: uid,
+           ket: 'Mata Pelajaran',
+           ketn: 'Nilai',
+           kelas: 'Kelas 1 Semester Genap',
        }
        setExcelData(data);
-     firebase.database().ref(`student/${id}/sem2`).set(datanilai)
-     alert('Nilai Semester II berhasil diupload')
+     firebase.database().ref(`/${angkatan}/${id}/kelas1semgenap`).set(datanilai)
+     firebase.database().ref(`/${angkatan}/${id}/nilaiupdate`).update(datanilai)
+     alert('Nilai berhasil diupload')
      }
      else{
        setExcelData(null);
@@ -96,12 +105,16 @@ function Exx() {
         TanggalUpload: date,
         data: data,
         Uploadby: uid,
+        ket: 'Mata Pelajaran',
+        ketn: 'Nilai',
+        kelas: 'Kelas 2 Semester Ganjil',
        }
        setExcelData(data);
       
        
-     firebase.database().ref(`student/${id}/sem3`).set(datanilai)
-     alert('Nilai Semester III berhasil diupload')
+     firebase.database().ref(`/${angkatan}/${id}/kelas2semganjil`).set(datanilai)     
+     firebase.database().ref(`/${angkatan}/${id}/nilaiupdate`).update(datanilai)
+     alert('Nilai berhasil diupload')
      }
      else{
        setExcelData(null);
@@ -119,12 +132,16 @@ function Exx() {
         TanggalUpload: date,
         data: data,
         Uploadby: uid,
+        ket: 'Mata Pelajaran',
+        ketn: 'Nilai',
+        kelas: 'Kelas 2 Semester Genap',
       }
        setExcelData(data);
      
        
-     firebase.database().ref(`student/${id}/sem4`).set(datanilai)
-     alert('Nilai Semester IV berhasil diupload')
+     firebase.database().ref(`/${angkatan}/${id}/kelas2semgenap`).set(datanilai)
+     firebase.database().ref(`/${angkatan}/${id}/nilaiupdate`).update(datanilai)
+     alert('Nilai berhasil diupload')
      }
      else{
        setExcelData(null);
@@ -142,10 +159,14 @@ function Exx() {
         TanggalUpload: date,
         data: data,
         Uploadby: uid,
+        ket: 'Mata Pelajaran',
+        ketn: 'Nilai',
+        kelas: 'Kelas 3 Semester Ganjil',
       }
        setExcelData(data);
-     firebase.database().ref(`student/${id}/sem5`).set(datanilai)
-     alert('Nilai Semester V berhasil diupload')
+     firebase.database().ref(`/${angkatan}/${id}/kelas3semganjil`).set(datanilai)
+     firebase.database().ref(`/${angkatan}/${id}/nilaiupdate`).update(datanilai)
+     alert('Nilai berhasil diupload')
      }
      else{
        setExcelData(null);
@@ -163,12 +184,16 @@ function Exx() {
         TanggalUpload: date,
         data: data,
         Uploadby: uid,
+        ket: 'Mata Pelajaran',
+        ketn: 'Nilai',
+        kelas: 'Kelas 3 Semester Genap',
       }
        setExcelData(data);
      
        
-     firebase.database().ref(`student/${id}/sem6`).set(datanilai)
-     alert('Nilai Semester VI berhasil diupload')
+     firebase.database().ref(`/${angkatan}/${id}/kelas3semgenap`).set(datanilai)
+     firebase.database().ref(`/${angkatan}/${id}/nilaiupdate`).update(datanilai)
+     alert('Nilai berhasil diupload')
      }
      else{
        setExcelData(null);
@@ -179,10 +204,15 @@ function Exx() {
      <div className='row'>
    <form onSubmit={sem1}>
        <p className='pseml'>Upload Nilai</p>
-          <p className='psem1'>Semester I</p>
-           <input type='file' className="upl"
-           onChange={handleFile} required></input>                  
-         <button type='submit' className='uploadbutt'>Upload Nilai Semester I</button>
+          <p className='psem1'>Kelas 1 Semester Ganjil</p>
+          <input type='file' id='file-input'
+           onChange={handleFile} required></input> 
+           <label for="file-input" >&nbsp;Pilih File</label> 
+           <span>
+             <strong></strong>
+             <span id="file-name"></span>
+             </span>                        
+         <button type='submit' className='uploadbutt'>Upload Nilai</button>
          
          </form>
    </div>
@@ -194,10 +224,14 @@ function Exx() {
      <div className='row2'>
    <form onSubmit={sem2}>
      
-          <p className='psem2'>Semester II</p>
-           <input type='file' className='upl2'
-           onChange={handleFile} required></input>                  
-         <button type='submit' className='uploadbutt'>Upload Nilai Semester II</button>
+          <p className='psem2'>Kelas 1 Semester Genap</p>
+          <input type='file' id='file-input' 
+           onChange={handleFile} ></input> 
+           <label for="file-input" >&nbsp;Pilih File</label> 
+           <span>
+             <span id="file-name"></span>
+             </span>                  
+         <button type='submit' className='uploadbutt'>Upload Nilai</button>
          </form>
   
    </div>
@@ -208,10 +242,15 @@ function Exx() {
     return (
      <div className='row3'>
    <form onSubmit={sem3}>
-         <p className='psem3'>Semester III</p>
-           <input type='file' className='upl3'
-           onChange={handleFile} required></input>                  
-         <button type='submit' className='uploadbutt'>Upload Nilai Semeter III</button>
+         <p className='psem3'>Kelas 2 Semester Ganjil</p>
+         <input type='file' id='file-input'
+           onChange={handleFile} ></input> 
+           <label for="file-input" >&nbsp;Pilih File</label> 
+           <span>
+             <strong></strong>
+             <span id="file-name"></span>
+             </span>                         
+         <button type='submit' className='uploadbutt'>Upload Nilai</button>
          </form>
   
    </div>
@@ -223,10 +262,16 @@ function Exx() {
      <div className='row4'>
     <form onSubmit={sem4}>
       
-    <p className='psem4'>Semester IV</p>
-           <input type='file' className='upl4'
-           onChange={handleFile} required></input>                  
-         <button type='submit' className='uploadbutt'>Upload Nilai Semeter IV</button>
+    <p className='psem4'>Kelas 2 Semester Genap</p>
+    <input type='file' id='file-input'
+           onChange={handleFile} ></input> 
+           <label for="file-input" >&nbsp;Pilih File</label> 
+           <span>
+             <strong></strong>
+             <span id="file-name"></span>
+             </span>            
+                        
+         <button type='submit' className='uploadbutt'>Upload Nilai</button>
          </form>
   
    </div>
@@ -237,10 +282,16 @@ function Exx() {
      <div className='row5'>
    <form onSubmit={sem5}>
      
-   <p className='psem5'>Semester V</p>
-     <div className='col'> <input type='file' className='upl5'
-           onChange={handleFile} required></input>                  
-         <button type='submit' className='uploadbutt'>Upload Nilai Semeter V</button>
+   <p className='psem5'>Kelas 3 Semester Ganjil</p>
+     <div className='col'> 
+     <input type='file' id='file-input'
+           onChange={handleFile}></input> 
+           <label for="file-input" >&nbsp;Pilih File</label> 
+           <span>
+             <strong></strong>
+             <span id="file-name"></span>
+             </span>                       
+         <button type='submit' className='uploadbutt'>Upload Nilai</button>
          </div>
           
          </form>
@@ -254,10 +305,15 @@ function Exx() {
      <div className='row6'>
    <form onSubmit={sem6}>
      
-   <p className='psem6'>Semester VI</p>
-           <input type='file' className='upl6'
-           onChange={handleFile} required></input>                  
-         <button type='submit' className='uploadbutt'>Upload Nilai Semeter VI</button>
+   <p className='psem6'>Kelas 3 Semester Genap</p>
+           <input type='file' id='file-input'
+           onChange={handleFile}></input> 
+           <label for="file-input" >&nbsp;Pilih File</label> 
+           <span>
+             <strong></strong>
+             <span id="file-name"></span>
+             </span>                
+         <button type='submit' className='uploadbutt'>Upload Nilai</button>
          </form>
   
    </div>
@@ -266,17 +322,18 @@ function Exx() {
   return (
    <div> 
      <SideMenu
-   link={`/${uid}/daftarsiswa`} title={"Daftar Siswa"}
-   link2={""} title2={""}  icon2={""}
+   link={`/${uid}/daftarsiswa/${angkatan}`} title={"Daftar Siswa"}
+   link2={""} title2={""}  
    link3={""} title3={""} icon={""}
 />
-     <div>
+     <div className='divs'>
   {list()}
   {list2()}
   {list3()}
   {list4()}
   {list5()}
   {list6()}
+  <p className='linktem'>Template Nilai <a href="https://docs.google.com/spreadsheets/d/1UqenOR4odKNk8YlWjnGJNnsk_vgp8GHB/edit?usp=sharing&ouid=114619245391787850244&rtpof=true&sd=true">Buka</a></p>
      </div>
     
     </div>

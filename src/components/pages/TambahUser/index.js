@@ -3,10 +3,10 @@ import SideMenu from '../../menu/SideMenu';
 import firebase from "../../../config/Firebase"
 
 const TambahUser = () =>{
+  const [angkatan, setAngkatan] = useState("")
   const [namaLengkap, setnamaLengkap] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const onSubmit = () => {
      const data = {
        namaLengkap : namaLengkap,
@@ -55,15 +55,18 @@ const TambahUser = () =>{
             const data = {
               namaLengkap : namaLengkap,
               email: email,
+              angkatan: angkatan,
             }
             firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
               //simpan ke realtime database
               const userId = userCredential.user.uid;
-              firebase.database().ref('student/' + userId).set(data);
+              firebase.database().ref(`/${angkatan}/` + userId).set(data);
+              
              setnamaLengkap('')
              setEmail('')
             setPassword('')
+            setAngkatan('')
             alert('Akun berhasil dibuat')
             })
             .catch((error) => {
@@ -114,7 +117,7 @@ const TambahUser = () =>{
       <br />
       <button className='buatbtn' onClick={onSubmit} >Buat Akun</button>
      
-
+  
   </div>
 </div>
  
@@ -181,6 +184,13 @@ const TambahUser = () =>{
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+      />
+      
+      <input
+        className="regs"
+        placeholder="Angkatan"
+        value={angkatan}
+        onChange={(e) => setAngkatan(e.target.value)}
       />
       <br />
       <br />

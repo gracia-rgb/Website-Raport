@@ -523,10 +523,11 @@ input[type="file"] {
 .uploadbutt{
   background-color: #9388DF;
   color: white;
-  width: 200px;
+  width: 120px;
   border-radius: 10px;
   border-style: none;
   padding-bottom: 5px;
+  margin-left: 10px;
 }
 
 .buttonhome {
@@ -608,9 +609,9 @@ margin-left: 380px;
 }
 
 .psem1{
-margin-top: 45px;
+margin-top: 75px;
 margin-left: 380px;
-width: 90px;
+width: 200px;
 color: #5D5D89;
 font-size: 20;
 }
@@ -623,42 +624,41 @@ color: #8b066f;
 }
 
 .psem2 {
- margin-top: 95px; 
-margin-left: 380px;
-width: 90px;
-color: #5D5D89;
-
-font-size: 20;
+ margin-top: 138px; 
+ margin-left: 380px;
+ width: 200px;
+ color: #5D5D89;
+ font-size: 20;
 }
 
 .psem3 {
- margin-top: 145px; 
+ margin-top: 204px; 
 font-size: 20;
 color: #5D5D89;
 margin-left: 380px;
-width: 90px;
+width: 200px;
 }
 
 .psem4 {
- margin-top: 195px;  
+ margin-top: 269px;  
 font-size: 20;
 color: #5D5D89;
 margin-left: 380px;
-width: 90px;
+width: 200px;
 }
 
 .psem5 {
- margin-top: 245px;
+ margin-top: 335px;
 font-size: 20;
 color: #5D5D89;
 margin-left: 380px;
-width: 90px; 
+width: 200px; 
 }
 
 .psem6 {
-margin-top: 295px;  
+margin-top: 400px;  
 margin-left: 380px;
-width: 90px;
+width: 200px;
 font-size: 20;
 color: #5D5D89;
 }
@@ -781,7 +781,7 @@ color: #5D5D89;
 
 .sebagai {
   margin-top: 40px;
-  margin-left: 290px;
+  margin-left: 310px;
 }
 
 .sebagai1{
@@ -900,7 +900,7 @@ color: #5D5D89;
 }
 
 .formadd {
-  margin-top: -50px;
+  margin-top: 20px;
   margin-left: 50px;
 }
 
@@ -950,7 +950,7 @@ color: #5D5D89;
 }
 
 .forgot {
-  margin-top: 455px;
+  margin-top: 535px;
   margin-left: 569px;
   width: 200px;
 }
@@ -1006,4 +1006,71 @@ color: #5D5D89;
   width: 300px;
   color: gray;
   font-size: 12px;
+}
+
+input#file-input {
+  display: none;
+}
+
+input#file-input + label {
+  background-color: #1377AF;
+  padding: 8px;
+  color: white;
+  border-radius: 9px;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+input#file-input + label:hover{
+  background-color: #2F80ED;
+  cursor: pointer;
+}
+
+.divs{
+  margin-top: -300px;
+}
+
+.linktem{
+  margin-top: 30px;  
+  margin-left: 250px;
+  font-size: 20;
+  color: #5D5D89;
+  width: 200px;
+}
+
+.searching {
+  margin-top: 20px;
+  margin-left: -390px;
+  margin-right: 400px;
+}
+
+.actionlabel{
+  margin-left: 99px;
+}
+
+.atc{
+  margin-left: -20px;
+}
+.sec{
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 75px;
+  height: 30px;
+  margin-top: 0px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.formop{
+  margin-left: 50px;
+  margin-top: 100px;
+}
+
+.userb{
+  background-color: #008000;
+  color: white;
+  text-align: center;
+  border-style: none;
+  height: 30px;
+  width: 30px;
 }

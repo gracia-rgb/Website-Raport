@@ -14,7 +14,7 @@ const OperatorHome = () => {
             <h1>Welcome {uid}</h1>
            
               <SideMenu
-                link={"/editdatasiswa"} title={"Edit Data Siswa"}
+                link={"/opangkatan"} title={"Edit Data Siswa"}
                 link2={""} title2={""}
                 link3={""} title3={""} 
             />

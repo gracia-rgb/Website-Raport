@@ -6,22 +6,10 @@ const User = () =>{
     const [students, setStudents] = useState([]);
     const [walikelas, setWaliKelas] = useState([]);
     const [operator, setOperator] = useState([]);
+    const [angkatan, setAngkatan] = useState('');
     useEffect(() => {
-        //student
-        firebase.database().ref('/student').on("value", (res) => {
-          if(res.val()) {
-              //ubah menjadi array
-             const rawData = res.val();
-              const studentArr =[];
-              Object.keys(rawData).map((item) => {
-                studentArr.push({
-                    id: item,
-                    ...rawData[item],
-                });
-              });
-              setStudents(studentArr);
-            }
-        });
+        
+        
         //walikelas
         firebase.database().ref('/walikelas').on("value", (res) => {
             if(res.val()) {
@@ -58,8 +46,26 @@ const User = () =>{
       }, []);
 
       const onDeleteSt = (item) => {
-        firebase.database().ref(`student/${item.id}`).remove()
+        firebase.database().ref(`/${angkatan}/${item.id}`).remove()
         alert('Siswa berhasil dihapus')
+      }
+      const handle = () => {
+        //student
+        firebase.database().ref(`/${angkatan}/`).on("value", (res) => {
+          if(res.val()) {
+              //ubah menjadi array
+             const rawData = res.val();
+              const studentArr =[];
+              Object.keys(rawData).map((item) => {
+                studentArr.push({
+                    id: item,
+                    ...rawData[item],
+                });
+              });
+              setStudents(studentArr);
+            }
+        });
+        setAngkatan('')
       }
     return (
         <div >
@@ -147,6 +153,10 @@ const User = () =>{
  </button>
 
 <div className="collapse" id="siswa">
+<label  className="form-label">Masukan Angkatan Untuk Melihat Daftar Akun Siswa</label>
+        <input 
+          placeholder="Angkatan"  value={angkatan} onChange={(e) => setAngkatan(e.target.value)}/>
+           <button className='userb' onClick={handle}>Cari</button>
             <div>
         <table className='table table-striped'>
         <thead>

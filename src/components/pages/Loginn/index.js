@@ -2,33 +2,31 @@ import React, {useState} from "react";
 import "../../../App.css";
 import {useHistory} from 'react-router-dom';
 const Loginn = () => {
+  const [id, setId] = useState("")
     let history = useHistory();
-    const handleAdmin = () => {
-      history.push("/admin")
-    }
-    const handleOperator= () => {
-      history.push("/operator")
-    }
-    const handleWalikelas = () => {
-      history.push("/walikelas")
-    }
-    const handleClick = () => {
-      history.push("/register")
+  
+    const submit = () => {
+      if (id == 1290) {
+        history.push("/operator")
+      }else if (id == 1930) {
+        history.push("/walikelas")
+      }else if (id == 1890) {
+        history.push("/admin")
+      }else {
+        alert("ID yang anda masukan tidak terdaftar")
+      }
     }
   return(
   <>
       <div className="sebagai">
-      <h1 >Login Sebagai</h1>
+      <h1>Masukan ID </h1>
       </div>
     <div  className="container">
     <div  className="row g-2">
-      
-        <button  className="p-3" onClick={handleAdmin}>Admin</button>
-        <button  className="p-3" onClick={handleOperator}>Operator</button>
-        <button  className="p-3" onClick={handleWalikelas}>Wali Kelas</button>
+       <input className="form-control" type="password"  placeholder="ID Sesuai Jenis Pengguna" value={id}  onChange={(e) => setId(e.target.value)}/>
+       <br></br>
+        <button  className="p-3" onClick={submit}>Submit</button>
 
-        <p  className="p">Atau</p>
-        <button type="button" class="btn1 btn-info btn-lg"  onClick={handleClick}>Buat Akun</button>
         </div>
   </div>
   </>
