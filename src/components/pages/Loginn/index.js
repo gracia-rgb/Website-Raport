@@ -15,6 +15,7 @@ const Loginn = () => {
       }else {
         alert("ID yang anda masukan tidak terdaftar")
       }
+      setId('');
     }
   return(
   <>

@@ -7,6 +7,8 @@ const User = () =>{
     const [walikelas, setWaliKelas] = useState([]);
     const [operator, setOperator] = useState([]);
     const [angkatan, setAngkatan] = useState('');
+    
+    
     useEffect(() => {
         
         
@@ -46,12 +48,21 @@ const User = () =>{
       }, []);
 
       const onDeleteSt = (item) => {
+        console.log(angkatan)
         firebase.database().ref(`/${angkatan}/${item.id}`).remove()
+        alert('Siswa berhasil dihapus')
+      }
+      const onDeleteop = (item) => {
+        firebase.database().ref(`operator/${item.id}`).remove()
+        alert('Siswa berhasil dihapus')
+      }
+      const onDeletewl = (item) => {
+        firebase.database().ref(`walikelas/${item.id}`).remove()
         alert('Siswa berhasil dihapus')
       }
       const handle = () => {
         //student
-        firebase.database().ref(`/${angkatan}/`).on("value", (res) => {
+        firebase.database().ref(`/${angkatan}`).on("value", (res) => {
           if(res.val()) {
               //ubah menjadi array
              const rawData = res.val();
@@ -65,7 +76,6 @@ const User = () =>{
               setStudents(studentArr);
             }
         });
-        setAngkatan('')
       }
     return (
         <div >
@@ -102,7 +112,7 @@ const User = () =>{
                 </th>
               <td>
                 <div>
-                <button className="hapus" onClick={() => onDeleteSt(item)}>Hapus</button>
+                <button className="hapus" onClick={() => onDeletewl(item)}>Hapus</button>
              
                 </div>
                  </td>
@@ -136,7 +146,7 @@ const User = () =>{
                 </th>
               <td>
                 <div>
-                <button className="hapus" onClick={() => onDeleteSt(item)}>Hapus</button>
+                <button className="hapus" onClick={() => onDeleteop(item)}>Hapus</button>
              
                 </div>
                  </td>
